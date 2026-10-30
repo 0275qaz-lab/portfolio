@@ -1,0 +1,293 @@
+
+  
+
+/* 기본 설정 */
+:root {
+  --header-height: 150px;
+  --header-color: #6b4d4d;
+  --home-color: #6e5353;
+  --works-color: #b1b2a3;
+  --cream: #f5e7d6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  margin: 0;
+  color: #080808;
+  background: var(--home-color);
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 6px;
+}
+
+/* 공통 헤더 */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: var(--header-height);
+  padding: 0 28px 0 19px;
+
+  background: var(--header-color);
+  border: 1px solid #080808;
+}
+
+.brand {
+  display: block;
+  width: 248px;
+}
+
+.brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.header nav a:hover {
+  opacity: 0.6;
+}
+
+/* 헤더 높이만큼 본문을 아래로 이동 */
+main {
+  padding-top: var(--header-height);
+}
+
+/* 첫 번째 화면 */
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: calc(100svh - var(--header-height));
+  padding: 60px 40px;
+
+  background: var(--home-color);
+}
+
+.intro {
+  width: 100%;
+  text-align: center;
+  transform: translateY(-25px);
+}
+
+.intro-logo {
+  display: block;
+  width: min(100%, 1020px);
+  height: auto;
+  margin: 0 auto;
+}
+
+.edition {
+  margin: 65px 0 0;
+  color: var(--cream);
+  font-size: 27px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+/* 두 번째 화면 */
+.works {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 660px);
+  align-content: start;
+  gap: 60px;
+
+  min-height: calc(100svh - var(--header-height));
+  padding: 51px 60px 100px 80px;
+
+  background: var(--works-color);
+}
+
+.works-intro h1 {
+  margin: -6px 0 29px;
+  font-size: 88px;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -3px;
+  word-break: keep-all;
+}
+
+.works-intro p {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.85;
+  letter-spacing: -0.5px;
+}
+
+.works-project {
+  min-width: 0;
+  margin: 0;
+}
+
+.works-project img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.works-project figcaption {
+  margin-top: 26px;
+  font-size: 27px;
+  line-height: 1.3;
+}
+
+.works-project h2 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.works-project p {
+  margin: 26px 0 0;
+}
+
+/* 태블릿 */
+@media (max-width: 1100px) {
+  :root {
+    --header-height: 120px;
+  }
+
+  .header {
+    padding: 0 25px;
+  }
+
+  .brand {
+    width: 210px;
+  }
+
+  .header nav {
+    gap: 25px;
+    font-size: 23px;
+  }
+
+  .works {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 35px;
+    padding: 44px 40px 80px;
+  }
+
+  .works-intro h1 {
+    font-size: 64px;
+  }
+
+  .works-intro p,
+  .works-project figcaption {
+    font-size: 21px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 700px) {
+  :root {
+    --header-height: 90px;
+  }
+
+  .header {
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .brand {
+    width: 145px;
+    flex-shrink: 0;
+  }
+
+  .header nav {
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  .home {
+    padding: 40px 24px;
+  }
+
+  .intro {
+    transform: none;
+  }
+
+  .edition {
+    margin-top: 38px;
+    font-size: 20px;
+  }
+
+  .works {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 38px;
+    padding: 38px 24px 70px;
+  }
+
+  .works-intro h1 {
+    margin: 0 0 23px;
+    font-size: clamp(44px, 10vw, 64px);
+    letter-spacing: -2px;
+  }
+
+  .works-intro p {
+    font-size: 18px;
+  }
+
+  .works-project figcaption {
+    margin-top: 18px;
+    font-size: 20px;
+  }
+
+  .works-project p {
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header {
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .brand {
+    width: 125px;
+  }
+
+  .header nav {
+    gap: 10px;
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
